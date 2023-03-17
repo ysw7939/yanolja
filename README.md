@@ -67,3 +67,6 @@
 - 비밀번호
 - 휴대폰 번호
 - 이메일
+
+# ERD
+![야놀자_ERD](https://user-images.githubusercontent.com/91578199/226068996-33f3d2c5-3712-4443-8b4b-e303156f31c5.png)
