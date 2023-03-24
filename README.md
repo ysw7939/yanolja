@@ -89,5 +89,6 @@
 - 체크아웃
 
 # ERD
-![Untitled](https://user-images.githubusercontent.com/91578199/226592599-9d7e096c-25b8-477f-8cc5-7daf30f3c46d.png)
+![image](https://user-images.githubusercontent.com/91578199/227523048-03ee1175-36a5-4853-9bea-3c84ea2dd801.png)
+
 
