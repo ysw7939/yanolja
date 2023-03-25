@@ -1,38 +1,34 @@
 package com.example.yanolja.domain.accomodation;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "accomdation")
 public class Accomodation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String location;
-    private String theme;
-    private String accomdationOfType;
-    private int phoneNumber;
+    @Column(nullable = false)
+    private String choice;
+    @Column(nullable = false)
+    private String phoneNumber;
+
     private String announcement;
     private String policy;
-    private String languageSupport;
-    private String sellerInformation;
     private long latitude;
     private long longitude;
+    @Column(nullable = false)
+    private int totalRoom;
 
-    private String photo;
+
 
     public Accomodation() {
     }
 
-    public Accomodation(String name, String location, String theme, String accomdationOfType, int phoneNumber, String announcement, String policy, String languageSupport, String sellerInformation, String photo) {
-        this.name = name;
-        this.location = location;
-        this.theme = theme;
-        this.accomdationOfType = accomdationOfType;
-        this.phoneNumber = phoneNumber;
-        this.announcement = announcement;
-        this.policy = policy;
-        this.languageSupport = languageSupport;
-        this.sellerInformation = sellerInformation;
-        this.photo = photo;
-    }
+
 }
