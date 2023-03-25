@@ -1,30 +1,38 @@
 package com.example.yanolja.domain.room;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
-@Getter @Setter
+@Entity
+@Table(name = "Room")
 public class Room {
-    private long id;
-    public long accomoId;
-    public String BasicInformation;
-    public String reservationNotice;
-    public String theme;
-    public Date fewHoursk;
-    public Date checkIn;
-    public Date checkOut;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long roomId;
+    @Column
+    private String basicInformation;
+    @Column
+    private String reservationNoice;
+    @Column(nullable = false)
+    private Date checkIn;
+    @Column(nullable = false)
+    private Date checkOut;
+    @Column(nullable = false)
+    private int price;
+    @Column(nullable = false)
+    private int personnel;
+    @Column(nullable = false)
+    private int maxPersonnel;
+    @Column
+    private int rentHours;
+    @Column
+    private int rentPrice;
+    @Column
+    private Date operatingStart;
+    @Column
+    private Date OperatingEnd;
 
-    public Room() {
-    }
 
-    public Room(long accomoId, String basicInformation, String reservationNotice, String theme, Date fewHoursk, Date checkIn, Date checkOut) {
-        this.accomoId = accomoId;
-        BasicInformation = basicInformation;
-        this.reservationNotice = reservationNotice;
-        this.theme = theme;
-        this.fewHoursk = fewHoursk;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-    }
 }

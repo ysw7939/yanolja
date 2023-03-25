@@ -1,28 +1,27 @@
 package com.example.yanolja.domain.review;
 
-import lombok.Getter;
-import lombok.Setter;
+
+import jakarta.persistence.*;
 
 import java.util.Date;
-@Getter @Setter
+
+@Entity
+@Table(name = "review")
 public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long accommodationId;
-    private long roomId;
+    @Column(nullable = false)
     private int starRating;
-    private Date date;
+    @Column(nullable = false)
+    private Date dateCreated;
+    @Column(nullable = false)
     private String content;
-    private String photo;
+    @Column
+    private String answer;
+    @Column
+    private Date answerDate;
 
-    public Review() {
-    }
 
-    public Review(long accommodationId, long roomId, int starRating, Date date, String content, String photo) {
-        this.accommodationId = accommodationId;
-        this.roomId = roomId;
-        this.starRating = starRating;
-        this.date = date;
-        this.content = content;
-        this.photo = photo;
-    }
+
 }

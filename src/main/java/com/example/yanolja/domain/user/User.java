@@ -1,29 +1,26 @@
 package com.example.yanolja.domain.user;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Entity
+@Table(name = "user")
 public class User {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long userId;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String nickName;
-    private int point;
-    private String userId;
+    @Column(nullable = false)
+    private String loginId;
+    @Column(nullable = false)
     private String password;
-    private int phoneNumber;
+    @Column(nullable = false)
+    private String phoneNumber;
+    @Column(nullable = false)
     private String email;
 
-    public User() {
-    }
-
-    public User(String name, String nickName, int point, String userId, String password, int phoneNumber, String email) {
-        this.name = name;
-        this.nickName = nickName;
-        this.point = point;
-        this.userId = userId;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-    }
 }
