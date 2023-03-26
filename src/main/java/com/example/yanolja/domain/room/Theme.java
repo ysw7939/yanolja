@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "room_theme")
-public class theme {
+public class Theme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long themeId;

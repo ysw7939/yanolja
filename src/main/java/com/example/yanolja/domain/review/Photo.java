@@ -1,13 +1,14 @@
-package com.example.yanolja.domain.accomodation;
+package com.example.yanolja.domain.review;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "accomdation_photo")
-public class photo {
+@Table(name = "review_photo")
+public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long photo_id;
+    private long photoId;
     @Column(nullable = false)
     private String photo;
+
 }

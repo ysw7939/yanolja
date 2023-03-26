@@ -1,12 +1,14 @@
 package com.example.yanolja.domain.reservation;
 
+import com.example.yanolja.domain.room.Room;
+import com.example.yanolja.domain.user.User;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
-public class reservation {
+public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long reservationId;
@@ -20,4 +22,11 @@ public class reservation {
     private int price;
     @Column(nullable = false)
     private Date reservationDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 }
