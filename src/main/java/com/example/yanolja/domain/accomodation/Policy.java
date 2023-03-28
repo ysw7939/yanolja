@@ -15,5 +15,10 @@ public class Policy {
     private String title;
     @Column
     private String content;
+    @ManyToMany
+    @JoinTable(name = "accomdation_policy_mapping",
+            joinColumns = @JoinColumn(name = "policy_id"),
+            inverseJoinColumns = @JoinColumn(name = "accomdation_id"))
+    private List<Accomodation> accomodations = new ArrayList<Accomodation>();
 
 }

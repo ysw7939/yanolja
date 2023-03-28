@@ -1,8 +1,12 @@
 package com.example.yanolja.domain.accomodation;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "accomdation_photo")
 public class Photo {
     @Id
@@ -11,4 +15,14 @@ public class Photo {
     @Column(nullable = false)
     private String photo;
 
+    @ManyToOne
+    @JoinColumn(name = "accomdation_id")
+    private Accomodation accomodation;
+
+    public void setAccomodation(Accomodation accomodation) {
+        this.accomodation = accomodation;
+        if (!accomodation.getPhotos().contains(this)) {
+            accomodation.getPhotos().add(this);
+        }
+    }
 }

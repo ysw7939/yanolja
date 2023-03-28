@@ -1,14 +1,20 @@
 package com.example.yanolja.domain.review;
 
 
+import com.example.yanolja.domain.review.Photo;
 import com.example.yanolja.domain.room.Room;
 import com.example.yanolja.domain.user.User;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "review")
 public class Review {
     @Id
@@ -25,12 +31,18 @@ public class Review {
     @Column
     private Date answerDate;
 
-    @OneToMany
-    @JoinColumn(name = "photo_id")
-    private List<Photo> photos;
+    @OneToMany(mappedBy = "review")
+    private List<Photo> photos = new ArrayList<Photo>();
+
+    public void addPhoto(Photo photo) {
+        this.photos.add(photo);
+        if(photo.getReview() != this){
+            photo.setReview(this);
+        }
+    }
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false,updatable = false)
     private User user;
     @ManyToOne
     @JoinColumn(name = "room_id")

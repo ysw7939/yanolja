@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "Room")
 public class Room {
     @Id
@@ -40,21 +42,22 @@ public class Room {
     @Column
     private Date OperatingEnd;
 
-    @OneToMany
-    @JoinColumn(name = "photo_id")
+    @OneToMany(mappedBy = "room")
     private List<Photo> photos;
+    public void addPhoto(Photo photo) {
+        this.photos.add(photo);
+        if(photo.getRoom() != this){
+            photo.setRoom(this);
+        }
+    }
 
-    @ManyToMany
-    @JoinTable(name = "room_theme",
-    joinColumns = @JoinColumn(name = "room_id"),
-    inverseJoinColumns = @JoinColumn(name = "theme_id"))
+    @ManyToMany(mappedBy = "room")
     private List<Theme> theme = new ArrayList<Theme>();
 
     @ManyToOne
     @JoinColumn(name = "accomdation_id")
     private Accomodation accomodation;
 
-    @OneToMany
-    @JoinColumn(name = "reservaion_id")
+    @OneToMany(mappedBy = "room")
     private List<Reservation> reservationList = new ArrayList<Reservation>();
 }

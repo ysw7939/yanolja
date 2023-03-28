@@ -32,7 +32,6 @@ public class User {
     @JoinColumn(name = "review_id")
     private List<Review> reviewList = new ArrayList<Review>();
 
-    @OneToMany
-    @JoinColumn(name = "reservation_id")
+    @OneToMany(mappedBy = "user")
     private List<Reservation> reservationList = new ArrayList<Reservation>();
 }

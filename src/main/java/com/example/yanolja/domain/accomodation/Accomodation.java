@@ -3,11 +3,15 @@ package com.example.yanolja.domain.accomodation;
 
 import com.example.yanolja.domain.room.Room;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "accomdation")
 public class Accomodation {
     @Id
@@ -27,33 +31,28 @@ public class Accomodation {
     @Column(nullable = false)
     private int totalRoom;
 
-    @OneToMany
-    @JoinColumn(name = "photo_id")
-    private List<Photo> photos;
+    @OneToMany(mappedBy = "accomdation")
+    private List<Photo> photos = new ArrayList<Photo>();
 
-    @OneToOne
-    @JoinColumn(name = "seller_information_id")
+    public void addPhoto(Photo photo) {
+        this.photos.add(photo);
+        if(photo.getAccomodation() != this){
+            photo.setAccomodation(this);
+        }
+    }
+
+    @OneToOne(mappedBy = "accomdation") // 연관관계의 주인이 아님을 뜻함
     private SellerInformation sellerInformation;
 
-    @ManyToMany
-    @JoinTable(name = "accomdation_policy",
-                joinColumns = @JoinColumn(name = "accomdation_id"),
-                inverseJoinColumns = @JoinColumn(name = "policy_id"))
+    @ManyToMany(mappedBy = "accomdation")
     private List<Policy> policy = new ArrayList<Policy>();
-    @ManyToMany
-    @JoinTable(name = "accomdation_language",
-            joinColumns = @JoinColumn(name = "accomdation_id"),
-            inverseJoinColumns = @JoinColumn(name = "language_id"))
+    @ManyToMany(mappedBy = "accomdation")
     private List<Language> language = new ArrayList<Language>();
 
-    @ManyToMany
-    @JoinTable(name = "accomdation_theme",
-            joinColumns = @JoinColumn(name = "accomdation_id"),
-            inverseJoinColumns = @JoinColumn(name = "theme_id"))
+    @ManyToMany(mappedBy = "accomdation")
     private List<Theme> theme = new ArrayList<Theme>();
 
-    @OneToMany
-    @JoinColumn(name = "room_id")
+    @OneToMany(mappedBy = "accomdation")
     private List<Room> rooms = new ArrayList<Room>();
 
 }

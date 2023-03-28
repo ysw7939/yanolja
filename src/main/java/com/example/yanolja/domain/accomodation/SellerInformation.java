@@ -20,4 +20,8 @@ public class SellerInformation {
     private String phoneNumber;
     @Column(nullable = false)
     private String businessRegistNum;
+
+    @OneToOne
+    @JoinColumn(name = "accomdation_id")
+    private Accomodation accomodation;
 }
