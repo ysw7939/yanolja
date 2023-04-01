@@ -7,9 +7,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "room_theme")
-public class Theme {
+public class RoomTheme {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long themeId;
     @Column(nullable = false)
     private String theme;

@@ -18,7 +18,7 @@
 
 ## 상품 도메인
 
-### 숙박업소 - Accomdation
+### 숙박업소 - accomodation
 
 - 이름
 - 위치

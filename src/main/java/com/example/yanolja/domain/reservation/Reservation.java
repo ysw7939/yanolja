@@ -10,8 +10,8 @@ import java.util.Date;
 @Table(name = "reservation")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long reservationId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long reservationId;
     @Column(nullable = false)
     private String reservationName;
     @Column(nullable = false)

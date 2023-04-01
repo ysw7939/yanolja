@@ -1,6 +1,5 @@
 package com.example.yanolja.domain.room;
 
-import com.example.yanolja.domain.accomodation.Accomodation;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,9 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "room_photo")
-public class Photo {
+public class RoomPhoto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long photoId;
     @Column
     private String photo;
@@ -22,8 +21,8 @@ public class Photo {
 
     public void setRoom(Room room) {
         this.room = room;
-        if (!room.getPhotos().contains(this)) {
-            room.getPhotos().add(this);
+        if (!room.getRoomPhotos().contains(this)) {
+            room.getRoomPhotos().add(this);
         }
     }
 }

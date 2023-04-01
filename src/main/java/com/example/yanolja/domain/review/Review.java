@@ -1,7 +1,6 @@
 package com.example.yanolja.domain.review;
 
 
-import com.example.yanolja.domain.review.Photo;
 import com.example.yanolja.domain.room.Room;
 import com.example.yanolja.domain.user.User;
 import jakarta.persistence.*;
@@ -18,7 +17,7 @@ import java.util.List;
 @Table(name = "review")
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(nullable = false)
     private int starRating;
@@ -32,12 +31,12 @@ public class Review {
     private Date answerDate;
 
     @OneToMany(mappedBy = "review")
-    private List<Photo> photos = new ArrayList<Photo>();
+    private List<ReviewPhoto> reviewPhotos = new ArrayList<ReviewPhoto>();
 
-    public void addPhoto(Photo photo) {
-        this.photos.add(photo);
-        if(photo.getReview() != this){
-            photo.setReview(this);
+    public void addPhoto(ReviewPhoto reviewPhoto) {
+        this.reviewPhotos.add(reviewPhoto);
+        if(reviewPhoto.getReview() != this){
+            reviewPhoto.setReview(this);
         }
     }
 

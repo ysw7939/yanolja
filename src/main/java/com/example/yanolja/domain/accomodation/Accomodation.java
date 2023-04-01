@@ -12,10 +12,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "accomdation")
+@Table(name = "accomodation")
 public class Accomodation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ACCOMDOATION_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(nullable = false)
     private String name;
@@ -31,28 +32,28 @@ public class Accomodation {
     @Column(nullable = false)
     private int totalRoom;
 
-    @OneToMany(mappedBy = "accomdation")
-    private List<Photo> photos = new ArrayList<Photo>();
+    @OneToMany(mappedBy = "accomodation")
+    private List<AccomPhoto> accomPhotos = new ArrayList<AccomPhoto>();
 
-    public void addPhoto(Photo photo) {
-        this.photos.add(photo);
-        if(photo.getAccomodation() != this){
-            photo.setAccomodation(this);
+    public void addPhoto(AccomPhoto accomPhoto) {
+        this.accomPhotos.add(accomPhoto);
+        if(accomPhoto.getAccomodation() != this){
+            accomPhoto.setAccomodation(this);
         }
     }
 
-    @OneToOne(mappedBy = "accomdation") // 연관관계의 주인이 아님을 뜻함
+    @OneToOne(mappedBy = "accomodation") // 연관관계의 주인이 아님을 뜻함
     private SellerInformation sellerInformation;
 
-    @ManyToMany(mappedBy = "accomdation")
+    @ManyToMany(mappedBy = "accomodations")
     private List<Policy> policy = new ArrayList<Policy>();
-    @ManyToMany(mappedBy = "accomdation")
+    @ManyToMany(mappedBy = "accomodations")
     private List<Language> language = new ArrayList<Language>();
 
-    @ManyToMany(mappedBy = "accomdation")
-    private List<Theme> theme = new ArrayList<Theme>();
+    @ManyToMany(mappedBy = "accomodations")
+    private List<AccomTheme> accomTheme = new ArrayList<AccomTheme>();
 
-    @OneToMany(mappedBy = "accomdation")
+    @OneToMany(mappedBy = "accomodation")
     private List<Room> rooms = new ArrayList<Room>();
 
 }

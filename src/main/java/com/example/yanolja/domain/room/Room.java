@@ -2,7 +2,6 @@ package com.example.yanolja.domain.room;
 
 import com.example.yanolja.domain.accomodation.Accomodation;
 import com.example.yanolja.domain.reservation.Reservation;
-import com.example.yanolja.domain.room.Photo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +16,7 @@ import java.util.List;
 @Table(name = "Room")
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long roomId;
     @Column
     private String basicInformation;
@@ -43,19 +42,20 @@ public class Room {
     private Date OperatingEnd;
 
     @OneToMany(mappedBy = "room")
-    private List<Photo> photos;
-    public void addPhoto(Photo photo) {
-        this.photos.add(photo);
-        if(photo.getRoom() != this){
-            photo.setRoom(this);
+    private List<RoomPhoto> roomPhotos;
+
+    public void addPhoto(RoomPhoto roomPhoto) {
+        this.roomPhotos.add(roomPhoto);
+        if(roomPhoto.getRoom() != this){
+            roomPhoto.setRoom(this);
         }
     }
 
-    @ManyToMany(mappedBy = "room")
-    private List<Theme> theme = new ArrayList<Theme>();
+    @ManyToMany(mappedBy = "rooms")
+    private List<RoomTheme> roomTheme = new ArrayList<RoomTheme>();
 
     @ManyToOne
-    @JoinColumn(name = "accomdation_id")
+    @JoinColumn(name = "accomodation_id")
     private Accomodation accomodation;
 
     @OneToMany(mappedBy = "room")

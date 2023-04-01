@@ -7,22 +7,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "accomdation_photo")
-public class Photo {
+@Table(name = "accomodation_PHOTO")
+public class AccomPhoto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long photo_id;
     @Column(nullable = false)
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "accomdation_id")
+    @JoinColumn(name = "ACCOMODATION_ID")
     private Accomodation accomodation;
 
     public void setAccomodation(Accomodation accomodation) {
         this.accomodation = accomodation;
-        if (!accomodation.getPhotos().contains(this)) {
-            accomodation.getPhotos().add(this);
+        if (!accomodation.getAccomPhotos().contains(this)) {
+            accomodation.getAccomPhotos().add(this);
         }
     }
 }

@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "accomdation_poilcy")
+@Table(name = "accomodation_poilcy")
 public class Policy {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long policyId;
     @Column
     private String title;
     @Column
     private String content;
     @ManyToMany
-    @JoinTable(name = "accomdation_policy_mapping",
+    @JoinTable(name = "accomodation_policy_mapping",
             joinColumns = @JoinColumn(name = "policy_id"),
-            inverseJoinColumns = @JoinColumn(name = "accomdation_id"))
+            inverseJoinColumns = @JoinColumn(name = "ACCOMDOATION_ID"))
     private List<Accomodation> accomodations = new ArrayList<Accomodation>();
 
 }

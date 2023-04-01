@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "seller_information")
 public class SellerInformation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long SellerInformationId;
     @Column(nullable = false)
     private String repersentName;
@@ -22,6 +22,6 @@ public class SellerInformation {
     private String businessRegistNum;
 
     @OneToOne
-    @JoinColumn(name = "accomdation_id")
+    @JoinColumn(name = "ACCOMDOATION_ID")
     private Accomodation accomodation;
 }

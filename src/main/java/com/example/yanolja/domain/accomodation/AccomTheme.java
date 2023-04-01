@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "accomdation_theme")
-public class Theme {
+@Table(name = "accomodation_theme")
+public class AccomTheme {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long theme_id;
     @Column(nullable = false)
     private String theme;
 
     @ManyToMany
-    @JoinTable(name = "accomdation_theme_mapping",
+    @JoinTable(name = "accomodation_theme_mapping",
             joinColumns = @JoinColumn(name = "theme_id"),
-            inverseJoinColumns = @JoinColumn(name = "accomdation_id"))
+            inverseJoinColumns = @JoinColumn(name = "ACCOMDOATION_ID"))
     private List<Accomodation> accomodations = new ArrayList<Accomodation>();
 }
