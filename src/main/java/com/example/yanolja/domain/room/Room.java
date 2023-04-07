@@ -54,7 +54,7 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Room_theme_mapping> themeMappings = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accomodation_id")
     private Accomodation accomodation;
 

@@ -15,7 +15,7 @@ public class AccomPhoto {
     @Column(nullable = false)
     private String photo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOMODATION_ID")
     private Accomodation accomodation;
 

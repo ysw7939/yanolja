@@ -13,11 +13,11 @@ public class Accomdation_policy_mapping {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accomdtion_id")
     private Accomodation accomodation;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "policy_id")
     private Policy policy;
 }

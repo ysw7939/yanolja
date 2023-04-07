@@ -15,7 +15,7 @@ public class RoomPhoto {
     @Column
     private String photo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
 
