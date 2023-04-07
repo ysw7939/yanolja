@@ -51,8 +51,8 @@ public class Room {
         }
     }
 
-    @ManyToMany(mappedBy = "rooms")
-    private List<RoomTheme> roomTheme = new ArrayList<RoomTheme>();
+    @OneToMany(mappedBy = "room")
+    private List<Room_theme_mapping> themeMappings = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "accomodation_id")

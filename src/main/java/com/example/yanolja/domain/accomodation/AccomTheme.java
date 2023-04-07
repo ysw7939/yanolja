@@ -14,9 +14,6 @@ public class AccomTheme {
     @Column(nullable = false)
     private String theme;
 
-    @ManyToMany
-    @JoinTable(name = "accomodation_theme_mapping",
-            joinColumns = @JoinColumn(name = "theme_id"),
-            inverseJoinColumns = @JoinColumn(name = "ACCOMDOATION_ID"))
-    private List<Accomodation> accomodations = new ArrayList<Accomodation>();
+    @OneToMany(mappedBy = "accomTheme")
+    private List<Accomdation_theme_mapping> themeMappings = new ArrayList<>();
 }

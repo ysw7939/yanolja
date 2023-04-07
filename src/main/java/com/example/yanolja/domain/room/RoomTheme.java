@@ -14,9 +14,6 @@ public class RoomTheme {
     @Column(nullable = false)
     private String theme;
 
-    @ManyToMany
-    @JoinTable(name = "room_theme_mapping",
-            joinColumns = @JoinColumn(name = "theme_id"),
-            inverseJoinColumns = @JoinColumn(name = "room_id"))
-    private List<Room> rooms = new ArrayList<Room>();
+    @OneToMany(mappedBy = "roomTheme")
+    private List<Room_theme_mapping> themeMappings = new ArrayList<>();
 }

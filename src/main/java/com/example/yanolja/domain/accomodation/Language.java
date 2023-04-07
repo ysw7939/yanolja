@@ -14,9 +14,6 @@ public class Language {
     @Column(nullable = false)
     private String language;
 
-    @ManyToMany
-    @JoinTable(name = "accomodation_language_mapping",
-            joinColumns = @JoinColumn(name = "language_id"),
-            inverseJoinColumns = @JoinColumn(name = "ACCOMDOATION_ID"))
-    private List<Accomodation> accomodations = new ArrayList<Accomodation>();
+    @OneToMany(mappedBy = "language")
+    private List<Accomdation_language_mapping> languageMappings = new ArrayList<>();
 }

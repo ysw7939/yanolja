@@ -45,13 +45,13 @@ public class Accomodation {
     @OneToOne(mappedBy = "accomodation") // 연관관계의 주인이 아님을 뜻함
     private SellerInformation sellerInformation;
 
-    @ManyToMany(mappedBy = "accomodations")
-    private List<Policy> policy = new ArrayList<Policy>();
-    @ManyToMany(mappedBy = "accomodations")
-    private List<Language> language = new ArrayList<Language>();
+    @OneToMany(mappedBy = "accomodation")
+    private List<Accomdation_policy_mapping> policyMappings = new ArrayList<>();
+    @OneToMany(mappedBy = "accomodation")
+    private List<Accomdation_language_mapping> languageMappings = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "accomodations")
-    private List<AccomTheme> accomTheme = new ArrayList<AccomTheme>();
+    @OneToMany(mappedBy = "accomodation")
+    private List<Accomdation_theme_mapping> themeMappings = new ArrayList<>();
 
     @OneToMany(mappedBy = "accomodation")
     private List<Room> rooms = new ArrayList<Room>();
