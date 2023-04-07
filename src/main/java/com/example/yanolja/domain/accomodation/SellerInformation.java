@@ -21,7 +21,7 @@ public class SellerInformation {
     @Column(nullable = false)
     private String businessRegistNum;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOMDOATION_ID")
     private Accomodation accomodation;
 }

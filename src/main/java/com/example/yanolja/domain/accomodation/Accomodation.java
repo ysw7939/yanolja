@@ -42,7 +42,7 @@ public class Accomodation {
         }
     }
 
-    @OneToOne(mappedBy = "accomodation") // 연관관계의 주인이 아님을 뜻함
+    @OneToOne(mappedBy = "accomodation" ,fetch = FetchType.LAZY) // 연관관계의 주인이 아님을 뜻함
     private SellerInformation sellerInformation;
 
     @OneToMany(mappedBy = "accomodation")
