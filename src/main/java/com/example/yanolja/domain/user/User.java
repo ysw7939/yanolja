@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "users")
 public class User {
     @Id
@@ -33,5 +34,5 @@ public class User {
     private List<Review> reviewList = new ArrayList<Review>();
 
     @OneToMany(mappedBy = "user")
-    private List<Reservation> reservationList = new ArrayList<Reservation>();
+    private List<Reservation> reservations = new ArrayList<Reservation>();
 }

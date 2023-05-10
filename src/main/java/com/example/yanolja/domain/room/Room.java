@@ -59,5 +59,5 @@ public class Room {
     private Accomodation accomodation;
 
     @OneToMany(mappedBy = "room")
-    private List<Reservation> reservationList = new ArrayList<Reservation>();
+    private List<Reservation> reservations = new ArrayList<Reservation>();
 }
