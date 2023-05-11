@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Setter
 @Getter
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userId;
+    private long Id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
