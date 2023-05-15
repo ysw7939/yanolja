@@ -21,10 +21,10 @@ public class UserRepository {
         return em.find(User.class, id);
     }
 
-    public Optional<User> findByLoginId(String loginId) {
-        return Optional.of(em.createQuery("select u from User u where loginId = :loginId", User.class)
-                .setParameter("loginId", loginId)
-                .getSingleResult());
+    public List<User> findByLoginId(String loginId) {
+        return em.createQuery("select u from User u where loginId = :loginId", User.class)
+                .setParameter("loginId",loginId )
+                .getResultList();
     }
 
     public List<User> findAll() {
