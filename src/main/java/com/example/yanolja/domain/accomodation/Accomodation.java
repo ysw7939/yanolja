@@ -21,14 +21,14 @@ public class Accomodation {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String location;
-    @Column(nullable = false)
     private String choice;
     @Column(nullable = false)
     private String phoneNumber;
     private String announcement;
-    private long latitude;
-    private long longitude;
+
+    @Embedded
+    private Adress adress;
+
     @Column(nullable = false)
     private int totalRoom;
 
